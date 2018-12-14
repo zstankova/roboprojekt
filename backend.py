@@ -84,6 +84,11 @@ class Robot:
                 (new_x, new_y) = direction.coor_delta
                 x = x + new_x
                 y = y + new_y
+                # When the robot leaves the map, it stops
+                if (x, y) not in state.board:
+                    # Robot is leaving the map, add any logic here (reset to
+                    # last checkpoint, remove on life, etc.)
+                    break
                 new_tiles = state.board[(x, y)]
                 # Check wall on the next tile in the direction of the move.
                 for tile in new_tiles:
